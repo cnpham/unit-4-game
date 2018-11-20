@@ -1,109 +1,112 @@
-        var guessCount = 10;
+        var num = function numberMaker() {
+            var random = Math.floor(Math.random() * 100);
+            return random;
+        } 
+        
+        var rubyVal = function addRuby() {
+            var random = Math.floor(Math.random() * 10);
+            return random;
+        }
+
+        var sapphireVal = function addSapphire() {
+            var random = Math.floor(Math.random() * 10);
+            return random;
+        }
+
+        var emeraldVal = function addEmerald() {
+            var random = Math.floor(Math.random() * 10);
+            return random;
+        }
+
+        var amethystVal = function addAmethyst() {
+            var random = Math.floor(Math.random() * 10);
+            return random;
+        }
+
         var winCount = 0;
-        var letterHistory = [];
+        var target = num;
+        var crystalCount = 0;
+        var rubyValue = rubyVal;
+        var sapphireValue = sapphireVal;
+        var emeraldValue = emeraldVal;
+        var amethystValue = amethystVal;
 
-        // list of words for the game
-        var wordBank = ["switch", "psfour", "xbone", "computer", "mobile", "tablet"];
-        var theGame = [];
-        var initGame = wordBank[Math.floor(Math.random() * wordBank.length)];
-        var gameCheck = 0;
-        
-        for (var i = 0; i < initGame.length; i++) {
-            theGame[i] = "_ ";
-        };
-
-        var startText = document.getElementById("start-text");
+        $("#wins-text").text(winCount);
+        $("#target-text").text(target);
+        $("#crystal-text").text(crystalCount);
         var winsText = document.getElementById("wins-text");
-        var historyText = document.getElementById("history-text")
-        var guesscountText = document.getElementById("guesscount-text");
-        var guessText = document.getElementById("guess-text");
-        var gameText = document.getElementById("game-text");
+        var targetText = document.getElementById("target-text");
+        var crystalText = document.getElementById("crystal-text");
+
+        var ruby = $("<img>");
+        ruby.addClass("ruby-img");
+        ruby.attr("src", "assets/images/Ruby@2x-939b4af5.png");
+        ruby.attr("data-rubyvalue", rubyValue);
+        $("#gems").append(ruby);
+
+        var sapphire = $("<img>");
+        sapphire.addClass("sapphire-img");
+        sapphire.attr("src", "assets/images/Sapphire-PNG-Image-77809-300x300.png");
+        sapphire.attr("data-sapphirevalue", sapphireValue);
+        $("#gems").append(sapphire);
+
+        var emerald = $("<img>");
+        emerald.addClass("emerald-img");
+        emerald.attr("src", "assets/images/emerald.png");
+        emerald.attr("data-emeraldvalue", emeraldValue);
+        $("#gems").append(emerald);
+
+        var amethyst = $("<img>");
+        amethyst.addClass("amethyst-img");
+        amethyst.attr("src", "assets/images/amethyst_gem___icon_by_shinepawart-d8sp605.png");
+        amethyst.attr("data-amethystvalue", amethystValue);
+        $("#gems").append(amethyst);
+
+        $(".ruby-img").on("click", function() {
+            var gemValue = ($(this).attr("data-rubyvalue"));
+            gemValue = parseInt(gemValue);
+            crystalCount = crystalCount + gemValue;
+        });
+
+        $(".sapphire-img").on("click", function() {
+            var gemValue = ($(this).attr("data-sapphirevalue"));
+            gemValue = parseInt(gemValue);
+            crystalCount = crystalCount + gemValue;
+        });
+
+        $(".emerald-img").on("click", function() {
+            var gemValue = ($(this).attr("data-emeraldvalue"));
+            gemValue = parseInt(gemValue);
+            crystalCount = crystalCount + gemValue;
+        });
         
-        // This function is run whenever the user presses a key.
-        document.onkeyup = function(event) {
-            // Determines which key was pressed.
-            var guess = event.key;
+        $(".amethyst-img").on("click", function() {
+            var gemValue = ($(this).attr("data-amethystvalue"));
+            gemValue = parseInt(gemValue);
+            crystalCount = crystalCount + gemValue;
+        });
 
-            // add guess to the history and minus the guess count
-            letterHistory.push(guess);
-            guessCount--;
-
-            // check for the letter in the selected word and replace theGame's _ accordingly
-            if (initGame.indexOf(guess)) {
-                for (var j = 0; j < initGame.length; j++ ) {
-                    if (initGame[j] === guess) {
-                        theGame[j] = guess;
-                        gameCheck++;
-                    }
-                }
-            }
-
-            // win condition check
-            if (gameCheck.length === initGame.length) {
-                alert("Victory!");
-
-                // display image of word guessed
-                if (initGame === "switch") {
-                    show_image('assets/images/switch.jpg', 300, 200, 'Switch');
-                }
-                else if (initGame === "psfour") {
-                    show_image('assets/images/ps4.jpg', 300, 200, 'Playstation 4');
-                }
-                else if (initGame === "xbone") {
-                    show_image('assets/images/xboxone.jpg', 300, 200, 'Playstation 4');
-                }
-                else if (initGame === "computer") {
-                    show_image('assets/images/aelinware.jpg', 300, 200, 'Playstation 4');
-                }
-                else if (initGame === "mobile") {
-                    show_image('assets/images/galaxy.jpg', 300, 200, 'Playstation 4');
-                }
-                else if (initGame === "tablet") {
-                    show_image('assets/images/tablet.jpg', 300, 200, 'Playstation 4');
-                };
-
-                winCount++;
-                guessCount = 10;
-                alert("Resetting the game...");
-                letterHistory = [];
-                initGame = wordBank[Math.floor(Math.random() * wordBank.length)];
-                for (var i = 0; i < initGame.length; i++) {
-                    theGame[i] = "_ ";
-                };
-                guess = "";
-            }
-                
-            // lose condition check
-            if (guessCount === 0 ) {
-                alert("Not good enough. The word was " + initGame + ".");
-                guessCount = 10;
-                alert("Resetting the game...");
-                letterHistory = [];
-                initGame = wordBank[Math.floor(Math.random() * wordBank.length)];
-                for (var i = 0; i < initGame.length; i++) {
-                    theGame[i] = "_ ";
-                };
-                guess = "";
-            }
+        // win condition check
+        if (crystalCount === game) {
+            alert("You are a Crystal Conqueror!");
+            alert("Resetting the game...");
+            winCount++;
+            game = numberMaker();
+            crystalCount = 0;
+            rubyValue = addRuby();
+            sapphireValue = addSapphire();
+            emeraldValue = addEmerald();
+            amethystValue = addAmethyst();
+        }
         
-            // hide directions
-            startText.textContent = "";
-
-            // score and game display
-            winsText.textContent = "Wins: " + winCount;
-            guesscountText.textContent = "Guesses Left: " + guessCount;
-            historyText.textContent = "Letters used: " + letterHistory.join(" ");
-            guessText.textContent = "Current Guess: " + guess;
-            gameText.textContent = "Target: " + theGame.join("");
-        };
-
-        // image display function
-        function show_image(src, width, height, alt) {
-            var img = document.createElement("img");
-            img.src = src;
-            img.width = width;
-            img.height = height;
-            img.alt = alt;
-
-            document.body.appendChild(img);
+        // lose condition check
+        if (crystalCount >= game) {
+            alert("You need to work on your Crystal Collecting skills!");
+            alert("Resetting the game...");
+            game = numberMaker();
+            crystalCount = 0;
+            rubyValue = addRuby();
+            sapphireValue = addSapphire();
+            emeraldValue = addEmerald();
+            amethystValue = addAmethyst();
         }

@@ -3,18 +3,28 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Word Guess Game</title>
+    <title>Crystal Collector</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Added a link to Font Awesome CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
 
     <div>
-        <p id="start-text">Press any key to get started!</p>
-        <p id="wins-text"></p>
-        <p id="history-text"></p>
-        <p id="guess-text"></p>
-        <p id="guesscount-text"></p>
-        <p id="game-text"></p>
+        <h1>Wins: <span id="wins-text"></span></h1>
+        <h1>Target: <span id="target-text"></span></h1>
+        <h1>Crystals: <span id="crystal-text"></span></h1>=
+
+        <div id="gems">
+        </div>
     </div>
 
     <script src="assets/javascript/game.js">     
