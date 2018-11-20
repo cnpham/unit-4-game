@@ -1,43 +1,50 @@
+        // functions which randomly generate values for the game
         var num = function numberMaker() {
-            var random = Math.floor(Math.random() * 100);
+            var random = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
             return random;
         } 
         
-        var rubyVal = function addRuby() {
-            var random = Math.floor(Math.random() * 10);
+        var addRuby = function () {
+            var random = Math.floor(Math.random() * 12);
             return random;
         }
 
-        var sapphireVal = function addSapphire() {
-            var random = Math.floor(Math.random() * 10);
+        var addSapphire = function () {
+            var random = Math.floor(Math.random() * 12);
             return random;
         }
 
-        var emeraldVal = function addEmerald() {
-            var random = Math.floor(Math.random() * 10);
+        var addEmerald = function () {
+            var random = Math.floor(Math.random() * 12);
             return random;
         }
 
-        var amethystVal = function addAmethyst() {
-            var random = Math.floor(Math.random() * 10);
+        var addAmethyst = function () {
+            var random = Math.floor(Math.random() * 12);
             return random;
         }
 
+        // set game variables and gem values
         var winCount = 0;
+        var loseCount = 0;
         var target = num;
         var crystalCount = 0;
-        var rubyValue = rubyVal;
-        var sapphireValue = sapphireVal;
-        var emeraldValue = emeraldVal;
-        var amethystValue = amethystVal;
+        var rubyValue = addRuby();
+        var sapphireValue = addSapphire();
+        var emeraldValue = addEmerald();
+        var amethystValue = addAmethyst();
 
+        // text display for the game
         $("#wins-text").text(winCount);
+        $("#losses-text").text(loseCount);
         $("#target-text").text(target);
         $("#crystal-text").text(crystalCount);
         var winsText = document.getElementById("wins-text");
+        var lossesText = document.getElementById("losses-text");
         var targetText = document.getElementById("target-text");
         var crystalText = document.getElementById("crystal-text");
 
+        // set up gem attributes and display their images
         var ruby = $("<img>");
         ruby.addClass("ruby-img");
         ruby.attr("src", "assets/images/Ruby@2x-939b4af5.png");
@@ -62,6 +69,7 @@
         amethyst.attr("data-amethystvalue", amethystValue);
         $("#gems").append(amethyst);
 
+        // the on-click event for each gem image
         $(".ruby-img").on("click", function() {
             var gemValue = ($(this).attr("data-rubyvalue"));
             gemValue = parseInt(gemValue);
@@ -77,17 +85,16 @@
         $(".emerald-img").on("click", function() {
             var gemValue = ($(this).attr("data-emeraldvalue"));
             gemValue = parseInt(gemValue);
-            crystalCount = crystalCount + gemValue;
+            crystalCount += gemValue;
         });
         
         $(".amethyst-img").on("click", function() {
             var gemValue = ($(this).attr("data-amethystvalue"));
             gemValue = parseInt(gemValue);
             crystalCount = crystalCount + gemValue;
-        });
 
-        // win condition check
-        if (crystalCount === game) {
+        // win condition check and game reset
+        if (crystalCount === target) {
             alert("You are a Crystal Conqueror!");
             alert("Resetting the game...");
             winCount++;
@@ -99,10 +106,11 @@
             amethystValue = addAmethyst();
         }
         
-        // lose condition check
-        if (crystalCount >= game) {
+        // lose condition check and game reset
+        if (crystalCount >= target) {
             alert("You need to work on your Crystal Collecting skills!");
             alert("Resetting the game...");
+            loseCount++;
             game = numberMaker();
             crystalCount = 0;
             rubyValue = addRuby();
@@ -110,3 +118,4 @@
             emeraldValue = addEmerald();
             amethystValue = addAmethyst();
         }
+        });
