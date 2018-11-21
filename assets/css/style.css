@@ -4,8 +4,8 @@
 }
 
 .sapphire-img {
-    width: 300px;
-    height: 300px;
+    width: 360px;
+    height: 360px;
 }
 
 .emerald-img {
@@ -16,10 +16,6 @@
 .amethyst-img {
     width: 300px;
     height: 300px;
-}
-
-.jumbotron {
-	background-color: #ffffff
 }
 
 .fonts p {
@@ -33,17 +29,26 @@ body {
 }
 
 h1 {
-    color: #ffffff;
     background-color: #4aaaa5;
 	font-family: 'Georgia', Times, Times New Roman, serif;
 }
 
 h2 {
-    color: #4aaaa5;
     background-color: #ffffff;
     border-color: #cccccc;
     font-family: 'Georgia', Times, Times New Roman, serif;
+}
 
+h3 {
+    background-color: rgb(243, 112, 36);
+    border-color: #cccccc;
+    font-family: 'Georgia', Times, Times New Roman, serif;
+}
+
+h4 { 
+    background-color: #bf32e2;
+    border-color: #cccccc;
+    font-family: 'Georgia', Times, Times New Roman, serif;
 }
 
 hr {
@@ -51,63 +56,27 @@ hr {
     color: #cccccc;
     overflow: visible;
     text-align: center;
-    height: 4px;
+    height: 15px;
     border: 0;
-    border-top: 2px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+    border-top: 15px solid #ccc;
+    margin: 15em 0;
+    padding: 15;
 }
 
 #box1 {
     box-sizing: content-box;
-    width: 220px;
+    width: 350px;
     height: 10x;
     padding: 10px;
     border: 1px;
     background-color: #4aaaa5;
-    border-color: #dddddd;
 }
 
 #box2 {
     box-sizing: content-box;
-    width: 500px;
-    height: 200px;
-    padding: 30px;
-    border: 10px;
-    background-color: #ffffff;
-    border-color: #dddddd;
-}
-#picture {
-	height: 100px;
-    width: 150px;
-    float: left;
-    margin-right: 10px;
-    margin-bottom: 5px;
-}
-
-#picture2 {
-    height: 150px;
-    width: 200px;
-    float: left;
-    margin-right: 10px;
-    margin-bottom: 5px;
-}
-#box3 {
-    box-sizing: content-box;
-    width: 500px;
-    height: 200px;
-    padding: 30px;
-    border: 10px;
-    background-color: #ffffff;
-    border-color: #dddddd;
-}
-
-#box4 {
-    box-sizing: content-box;
-    width: 500px;
-    height: 200px;
-    padding: 30px;
-    border: 10px;
-    background-color: #ffffff;
-    border-color: #dddddd;
+    width: 350px;
+    height: 10x;
+    padding: 10px;
+    border: 1px;
+    background-color: #4aaaa5;
 }
